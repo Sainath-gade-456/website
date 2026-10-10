@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#111111">
+    <title>MÈWOS Wear | Premium Luxury Fashion</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Discover MÈWOS Wear. Minimalist luxury capsule wardrobe for the modern aesthetic. Sustainable materials, tailored organic coats, hoodies, and premium linen.">
+    <meta name="keywords" content="Mewos Wear, luxury fashion, minimalist clothing, organic apparel, premium trench coat, sustainable clothing, capsule wardrobe">
+    <meta name="author" content="MÈWOS Wear">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="MÈWOS Wear | Premium Luxury Fashion">
+    <meta property="og:description" content="Minimalist luxury capsule wardrobe designed for the modern aesthetic. Sustainable organic cotton, French linen, and master tailoring.">
+    <meta property="og:image" content="assets/hero_banner.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="MÈWOS Wear | Premium Luxury Fashion">
+    <meta property="twitter:description" content="Minimalist luxury capsule wardrobe designed for the modern aesthetic. Sustainable organic cotton, French linen, and master tailoring.">
+    <meta property="twitter:image" content="assets/hero_banner.png">
+    
+    <!-- Fonts: Playfair Display for Serifs, Outfit for clean geometric sans-serif -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Production Firebase web config. This keeps the browser on the project's
+        // real Firebase values while still allowing build-time injection when env
+        // variables are set for a hosted deployment.
+        window.__FIREBASE_CONFIG__ = {
+          apiKey: "AIzaSyCppVCXtR90CDAFx0p9YT_e88FBvmDQTDA",
+          authDomain: "landing-page-ba0a8.firebaseapp.com",
+          projectId: "landing-page-ba0a8",
+          storageBucket: "landing-page-ba0a8.firebasestorage.app",
+          messagingSenderId: "37343602337",
+          appId: "1:37343602337:web:1584bc805358518d168dd0"
+        };
+        <!-- FIREBASE_CONFIG_INJECT -->
+    </script>
+</head>
+<body>
+
+    <!-- Top Announcement Bar -->
+    <div class="announcement-bar">
+        <p>COMPLIMENTARY SHIPPING ON ALL ORDERS | INDULGE IN MINIMAL LUXURY</p>
+    </div>
+
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="#home">MÈWOS</a>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#shop" class="nav-link">Collection</a></li>
+                <li><a href="#about" class="nav-link">Our Story</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <div class="cart-trigger" id="cart-nav-btn">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-badge" id="cart-count">0</span>
+                </div>
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-nav" id="mobile-nav">
+        <div class="mobile-nav-header">
+            <span class="logo">MÈWOS</span>
+            <button class="close-menu-btn" id="close-menu-btn"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <ul class="mobile-links">
+            <li><a href="#home" class="mobile-link">Home</a></li>
+            <li><a href="#shop" class="mobile-link">Collection</a></li>
+            <li><a href="#about" class="mobile-link">Our Story</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        
+        <!-- Hero Banner Section -->
+        <section id="home" class="hero">
+            <div class="hero-image-wrapper">
+                <img src="assets/hero_banner.png" alt="MÈWOS Luxury Apparel Rack" class="hero-image">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-content">
+                <span class="hero-subtitle">NEW ARRIVALS 2026</span>
+                <h1 class="hero-title">Timeless Design.<br>Tailored Perfection.</h1>
+                <p class="hero-description">Discover the capsule wardrobe designed for the modern aesthetic. Handcrafted with premium organic fabrics and custom minimalist cuts.</p>
+                <a href="#shop" class="cta-btn-primary">Explore Collection <i class="fa-solid fa-arrow-right-long"></i></a>
+            </div>
+        </section>
+
+        <!-- Product Grid Section -->
+        <section id="shop" class="products-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <div>
+                        <span class="subtitle">CURATED PIECES</span>
+                        <h2 class="section-title">The Capsule Collection</h2>
+                    </div>
+                    <p class="section-desc">Clean lines, neutral tones, and premium comfort. Buy directly from our landing page with instantaneous checkout.</p>
+                </div>
+
+                <div class="products-grid" id="products-grid">
+                    <!-- Products will be dynamically populated from app.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Brand Values / USP Section -->
+        <section id="about" class="values-section">
+            <div class="section-container">
+                <div class="section-header text-center">
+                    <span class="subtitle">THE MÈWOS PROMISE</span>
+                    <h2 class="section-title">Designed with Conscience, Made to Last</h2>
+                </div>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon"><i class="fa-solid fa-leaf"></i></div>
+                        <h3>100% Organic Fabrics</h3>
+                        <p>We source ultra-soft organic cotton, sustainable French linen, and responsibly sourced wool to elevate comfort while protecting our planet.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon"><i class="fa-solid fa-scissors"></i></div>
+                        <h3>Artisanal Tailoring</h3>
+                        <p>Every piece is precision-cut and finished by master tailors, ensuring exceptional drape, durability, and a custom-made feel.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon"><i class="fa-solid fa-cubes"></i></div>
+                        <h3>Minimalist Philosophy</h3>
+                        <p>We craft versatile essentials designed to blend seamlessly into your daily wardrobe, delivering maximum style with minimal noise.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h2 class="logo">MÈWOS</h2>
+                <p>Establishing the modern standard of minimalist luxury fashion. Designed in-house, sold directly to you.</p>
+                <div class="social-icons">
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                    <li><a href="admin.html"><i class="fa-solid fa-screwdriver-wrench" style="margin-right: 5px;"></i> Admin Dashboard</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Mewos. All Rights Reserved.</p>
+            <p class="copyright-disclaimer">Mewos™️ is a registered brand launched in 2026. All content, designs, logos, images, text, graphics, and materials on this website are the property of Mewos and may not be copied, reproduced, distributed, or used without prior written permission.</p>
+        </div>
+    </footer>
+
+    <!-- CART SIDEBAR / DRAWER -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <div class="cart-drawer" id="cart-drawer">
+        <div class="cart-drawer-header">
+            <h3>YOUR BAG</h3>
+            <button class="close-cart-btn" id="close-cart-btn"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        
+        <!-- Cart Contents Container -->
+        <div class="cart-drawer-body" id="cart-items-container">
+            <!-- Dynamically populated or empty message -->
+        </div>
+
+        <div class="cart-drawer-footer" id="cart-footer">
+            <div class="cart-totals">
+                <span>Estimated Subtotal</span>
+                <span class="total-price" id="cart-total-price">₹0</span>
+            </div>
+            <p class="cart-note">Taxes and free shipping calculated at checkout.</p>
+            <button class="checkout-trigger-btn" id="cart-checkout-btn">PROCEED TO CHECKOUT</button>
+        </div>
+    </div>
+
+    <!-- PRODUCT QUICK VIEW MODAL -->
+    <div class="modal-overlay" id="product-modal">
+        <div class="modal-content product-modal-content">
+            <button class="close-modal-btn" id="close-product-modal"><i class="fa-solid fa-xmark"></i></button>
+            <div class="product-modal-grid">
+                <div class="modal-gallery">
+                    <img id="modal-product-image" src="" alt="Product View">
+                </div>
+                <div class="modal-details">
+                    <span class="modal-brand">MÈWOS WEAR</span>
+                    <h2 id="modal-product-title" class="modal-title">Product Title</h2>
+                    
+                    <div class="modal-meta">
+                        <span id="modal-product-price" class="modal-price">₹0</span>
+                        <div class="modal-rating">
+                            <i class="fa-solid fa-star"></i>
+                            <span id="modal-product-rating">4.9</span> / 5.0
+                        </div>
+                    </div>
+
+                    <p id="modal-product-description" class="modal-description">Product description details go here.</p>
+
+                    <div class="modal-options">
+                        <h4 class="option-title">Select Size</h4>
+                        <div class="size-selector" id="modal-size-selector">
+                            <button class="size-btn" data-size="S">S</button>
+                            <button class="size-btn active" data-size="M">M</button>
+                            <button class="size-btn" data-size="L">L</button>
+                            <button class="size-btn" data-size="XL">XL</button>
+                        </div>
+                    </div>
+
+                    <div class="modal-actions-row">
+                        <button class="modal-add-btn" id="modal-add-to-cart-btn"><i class="fa-solid fa-bag-shopping"></i> Add to Bag</button>
+                        <button class="modal-buy-btn" id="modal-buy-now-btn">Buy Now</button>
+                    </div>
+
+                    <div class="modal-shipping-highlights">
+                        <div class="highlight-item"><i class="fa-solid fa-truck-fast"></i> Free express shipping</div>
+                        <div class="highlight-item"><i class="fa-solid fa-rotate-left"></i> 14-day hassle-free returns</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHECKOUT MODAL -->
+    <div class="modal-overlay" id="checkout-modal">
+        <div class="modal-content checkout-modal-content">
+            <button class="close-modal-btn" id="close-checkout-modal"><i class="fa-solid fa-xmark"></i></button>
+            
+            <div class="checkout-grid">
+                <!-- Left Column: Shipping & Payment Form -->
+                <div class="checkout-form-container">
+                    <h2>CHECKOUT</h2>
+                    <form id="checkout-form" novalidate>
+                        
+                        <!-- Step 1: Shipping Details -->
+                        <div class="form-section">
+                            <h3 class="section-subtitle">1. Shipping Information</h3>
+                            <div class="form-group">
+                                <label for="chk-name">Full Name *</label>
+                                <input type="text" id="chk-name" required placeholder="e.g. Jane Doe">
+                                <span class="error-msg" id="name-error">Please enter your name</span>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="chk-email">Email Address *</label>
+                                    <input type="email" id="chk-email" required placeholder="e.g. jane@example.com">
+                                    <span class="error-msg" id="email-error">Please enter a valid email</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="chk-phone">Phone Number *</label>
+                                    <input type="tel" id="chk-phone" required placeholder="10-digit number">
+                                    <span class="error-msg" id="phone-error">Please enter a valid phone number</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="chk-address">Delivery Address *</label>
+                                <textarea id="chk-address" required placeholder="House/Flat No., Street, Landmark, City, Pincode" rows="3"></textarea>
+                                <span class="error-msg" id="address-error">Please enter shipping address</span>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Payment Method -->
+                        <div class="form-section">
+                            <h3 class="section-subtitle">2. Payment Method</h3>
+                            
+                            <div class="payment-selector">
+                                <label class="payment-option">
+                                    <input type="radio" name="payment-method" value="cod" checked>
+                                    <div class="payment-card-body">
+                                        <div class="option-header">
+                                            <span class="option-title">Cash on Delivery (COD)</span>
+                                            <i class="fa-solid fa-money-bill-wave"></i>
+                                        </div>
+                                        <p class="option-desc">Pay with cash upon receipt of the order.</p>
+                                    </div>
+                                </label>
+                                
+                                <label class="payment-option">
+                                    <input type="radio" name="payment-method" value="upi">
+                                    <div class="payment-card-body">
+                                        <div class="option-header">
+                                            <span class="option-title">UPI Payment</span>
+                                            <i class="fa-solid fa-mobile-screen-button"></i>
+                                        </div>
+                                        <p class="option-desc">Instant payments using GPay, PhonePe, Paytm, or BHIM.</p>
+                                    </div>
+                                </label>
+
+                                <label class="payment-option">
+                                    <input type="radio" name="payment-method" value="card">
+                                    <div class="payment-card-body">
+                                        <div class="option-header">
+                                            <span class="option-title">Credit / Debit Card</span>
+                                            <i class="fa-solid fa-credit-card"></i>
+                                        </div>
+                                        <p class="option-desc">Secure debit or credit cards processing.</p>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div class="payment-details-wrapper">
+                                <p class="option-desc">UPI and card payments open Razorpay's secure checkout. Your card details never reach this website.</p>
+                            </div>
+
+                        </div>
+
+                        <button type="submit" class="submit-order-btn" id="confirm-order-btn">PLACE ORDER</button>
+                    </form>
+                </div>
+
+                <!-- Right Column: Order Summary -->
+                <div class="checkout-summary-container">
+                    <h3 class="summary-title">ORDER SUMMARY</h3>
+                    <div class="summary-items-list" id="checkout-summary-items">
+                        <!-- Dynamically populated -->
+                    </div>
+                    
+                    <div class="summary-totals">
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <span id="summary-subtotal">₹0</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Shipping</span>
+                            <span class="shipping-free">FREE</span>
+                        </div>
+                        <div class="summary-row total-row">
+                            <span>Grand Total</span>
+                            <span id="summary-grand-total">₹0</span>
+                        </div>
+                    </div>
+
+                    <div class="checkout-trust-badge">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <p>256-bit SSL Secure Encrypted Checkout. Your details are fully encrypted and safe.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LIVE ORDER TRACKING MODAL -->
+    <div class="modal-overlay" id="tracking-modal">
+        <div class="tracking-container">
+            <button class="close-modal-btn" id="close-tracking-modal"><i class="fa-solid fa-xmark"></i></button>
+            
+            <div class="tracking-header">
+                <div class="success-icon"><i class="fa-solid fa-circle-check"></i></div>
+                <h2>Order Placed Successfully!</h2>
+                <p>Thank you for shopping with MÈWOS. Your order <span id="tracking-order-id" class="order-id">#MEW-92813</span> is being processed.</p>
+            </div>
+
+            <!-- Live Status Timeline -->
+            <div class="live-timeline">
+                <div class="timeline-step completed" id="step-placed">
+                    <div class="step-icon"><i class="fa-solid fa-receipt"></i></div>
+                    <div class="step-info">
+                        <h4>Order Placed</h4>
+                        <p class="time">Just now</p>
+                        <p class="desc">We've received your order and are confirming detail verification.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-step active" id="step-processing">
+                    <div class="step-icon">
+                        <i class="fa-solid fa-box-open"></i>
+                        <div class="pulse-ring"></div>
+                    </div>
+                    <div class="step-info">
+                        <h4>Processing & Packing</h4>
+                        <p class="time">Estimated: 1-2 hours</p>
+                        <p class="desc">Our warehouse staff is carefully inspecting and wrapping your garment.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-step" id="step-dispatched">
+                    <div class="step-icon"><i class="fa-solid fa-truck"></i></div>
+                    <div class="step-info">
+                        <h4>Dispatched</h4>
+                        <p class="time">Expected: Tomorrow morning</p>
+                        <p class="desc">A logistics associate will pick up your package for express shipment.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-step" id="step-delivered">
+                    <div class="step-icon"><i class="fa-solid fa-house-chimney-user"></i></div>
+                    <div class="step-info">
+                        <h4>Delivered</h4>
+                        <p class="time">Estimated delivery: 2-3 business days</p>
+                        <p class="desc">Package will be hand-delivered to your specified shipping address.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tracking-footer">
+                <button class="done-tracking-btn" id="done-tracking-btn">CONTINUE SHOPPING</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <i class="fa-solid fa-circle-check toast-icon" id="toast-icon"></i>
+            <span class="toast-msg" id="toast-message">Item added to your bag</span>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+[
+  {
+    "orderId": "MEW-1788925744415",
+    "supplierOrderId": "DSP-1788925744415",
+    "trackingNumber": "TRK-9LWAHAG4",
+    "createdAt": "2026-09-09T03:49:04.415Z",
+    "supplierStatus": "mock-accepted",
+    "note": "No supplier API configured. Using local mock fulfillment."
+  },
+  {
+    "orderId": "MEW-1788925325658",
+    "supplierOrderId": "DSP-1788925325658",
+    "trackingNumber": "TRK-3BCVCBDW",
+    "createdAt": "2026-09-09T03:42:05.658Z",
+    "supplierStatus": "mock-accepted",
+    "note": "No supplier API configured. Using local mock fulfillment."
+  }
+]

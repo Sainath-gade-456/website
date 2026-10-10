@@ -1,0 +1,50 @@
+[
+  {
+    "orderId": "MEW-1788925744415",
+    "customerName": "Test User",
+    "customerEmail": "test@example.com",
+    "customerPhone": "9876543210",
+    "shippingAddress": "Hyderabad, India",
+    "paymentMethod": "cod",
+    "subtotal": 4999,
+    "items": [
+      {
+        "id": 2,
+        "name": "MÈWOS Minimalist Knit Hoodie",
+        "size": "M",
+        "quantity": 1,
+        "price": 4999
+      }
+    ],
+    "status": "placed",
+    "supplierOrderId": "DSP-1788925744415",
+    "trackingNumber": "TRK-9LWAHAG4",
+    "createdAt": "2026-09-09T03:49:04.415Z",
+    "supplierStatus": "mock-accepted",
+    "supplierNote": "No supplier API configured. Using local mock fulfillment."
+  },
+  {
+    "orderId": "MEW-1788925325658",
+    "customerName": "Test User",
+    "customerEmail": "test@example.com",
+    "customerPhone": "9876543210",
+    "shippingAddress": "Hyderabad, India",
+    "paymentMethod": "cod",
+    "subtotal": 4999,
+    "items": [
+      {
+        "id": 2,
+        "name": "MÈWOS Minimalist Knit Hoodie",
+        "size": "M",
+        "quantity": 1,
+        "price": 4999
+      }
+    ],
+    "status": "placed",
+    "supplierOrderId": "DSP-1788925325658",
+    "trackingNumber": "TRK-3BCVCBDW",
+    "createdAt": "2026-09-09T03:42:05.658Z",
+    "supplierStatus": "mock-accepted",
+    "supplierNote": "No supplier API configured. Using local mock fulfillment."
+  }
+]

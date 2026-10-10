@@ -1,0 +1,83 @@
+[
+  {
+    "id": 1,
+    "name": "MÈWOS Signature Trench",
+    "price": 12499,
+    "rating": 4.9,
+    "image": "assets/mewos_trench_coat.png",
+    "description": "A luxury double-breasted classic trench coat constructed from heavy organic cotton-canvas. Features tailored shoulders, adjustable belt, storm flaps, and a custom linen lining. A timeless layering piece designed to weather any season.",
+    "sizes": ["S", "M", "L", "XL"]
+  },
+  {
+    "id": 2,
+    "name": "MÈWOS Minimalist Knit Hoodie",
+    "price": 4999,
+    "rating": 4.8,
+    "image": "assets/mewos_knit_hoodie.png",
+    "description": "Constructed from 480gsm ultra-heavy organic French terry cotton. This premium hoodie is loop-wheeled for superior thickness, draping into a structured boxy fit. Finished with seamless ribbed cuffs and double-layered hood without drawstrings for a clean, minimalist silhouette.",
+    "sizes": ["S", "M", "L", "XL"]
+  },
+  {
+    "id": 3,
+    "name": "MÈWOS Linen Oversized Shirt",
+    "price": 3799,
+    "rating": 4.7,
+    "image": "assets/mewos_linen_shirt.png",
+    "description": "Woven from premium sustainable flax fibers in Normandy, France. This relaxed oversized shirt features drop-shoulders, a wide collar, and standard mother-of-pearl buttons. Naturally breathable and soft, it offers a sophisticated casual drape.",
+    "sizes": ["S", "M", "L", "XL"]
+  },
+  {
+    "id": 4,
+    "name": "MÈWOS Tailored Crop Blazer",
+    "price": 8999,
+    "rating": 4.9,
+    "image": "assets/mewos_tailored_blazer.png",
+    "description": "A cropped, structured double-breasted blazer with sharp peak lapels and padded shoulders. Tailored from a premium recycled wool blend, it features clean hidden closures and a full cupro lining. A modern statement piece for elevated style.",
+    "sizes": ["S", "M", "L", "XL"]
+  },
+  {
+    "id": 5,
+    "name": "Magnetic Phone Case",
+    "price": 599,
+    "rating": 4.4,
+    "image": "assets/cj_phone_case.png",
+    "description": "Slim magnetic protective phone case with built-in mounting plate. Compatible with most phones.",
+    "sizes": ["One Size"]
+  },
+  {
+    "id": 6,
+    "name": "RGB LED Light Strip (2m)",
+    "price": 899,
+    "rating": 4.6,
+    "image": "assets/cj_led_strip.png",
+    "description": "2-meter USB-powered RGB LED light strip with remote control and adhesive backing for easy installation.",
+    "sizes": ["One Size"]
+  },
+  {
+    "id": 7,
+    "name": "Minimalist Pendant Necklace",
+    "price": 699,
+    "rating": 4.5,
+    "image": "assets/cj_necklace.png",
+    "description": "Stainless steel minimalist pendant necklace. Hypoallergenic and water-resistant finish.",
+    "sizes": ["One Size"]
+  },
+  {
+    "id": 8,
+    "name": "Interactive Pet Toy Ball",
+    "price": 499,
+    "rating": 4.3,
+    "image": "assets/cj_pet_ball.png",
+    "description": "Automatic rolling pet ball to keep pets engaged. Durable, lightweight, and rechargeable.",
+    "sizes": ["Small", "Medium"]
+  },
+  {
+    "id": 9,
+    "name": "Reusable Stainless Straw Set",
+    "price": 299,
+    "rating": 4.7,
+    "image": "assets/cj_straws.png",
+    "description": "Set of 4 reusable stainless steel straws with cleaning brush and carry pouch. Eco-friendly.",
+    "sizes": ["One Size"]
+  }
+]
