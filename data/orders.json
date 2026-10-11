@@ -1,5 +1,55 @@
 [
   {
+    "orderId": "MEW-895854",
+    "customerName": "Test User",
+    "customerEmail": "test@example.com",
+    "customerPhone": "9876543210",
+    "shippingAddress": "123 Test Street, Bengaluru, Karnataka",
+    "paymentMethod": "cod",
+    "subtotal": 12499,
+    "items": [
+      {
+        "id": 1,
+        "name": "MÈWOS Signature Trench",
+        "size": "M",
+        "quantity": 1,
+        "price": 12499
+      }
+    ],
+    "status": "placed",
+    "supplierOrderId": "DSP-1791690191546",
+    "trackingNumber": "TRK-KO31O9KJ",
+    "createdAt": "2026-10-11T03:43:11.546Z",
+    "supplierStatus": "mock-accepted",
+    "paymentStatus": "pending",
+    "supplierNote": "No supplier API configured. Using local mock fulfillment."
+  },
+  {
+    "orderId": "MEW-TEST-1",
+    "customerName": "Test User",
+    "customerEmail": "test@example.com",
+    "customerPhone": "9876543210",
+    "shippingAddress": "123 Test Street, Bengaluru, Karnataka",
+    "paymentMethod": "cod",
+    "subtotal": 1499,
+    "items": [
+      {
+        "id": 1,
+        "name": "Test Item",
+        "size": "M",
+        "quantity": 1,
+        "price": 1499
+      }
+    ],
+    "status": "placed",
+    "supplierOrderId": "DSP-1791690025828",
+    "trackingNumber": "TRK-OTHUWG6S",
+    "createdAt": "2026-10-11T03:40:25.828Z",
+    "supplierStatus": "mock-accepted",
+    "paymentStatus": "pending",
+    "supplierNote": "No supplier API configured. Using local mock fulfillment."
+  },
+  {
     "orderId": "MEW-1788925744415",
     "customerName": "Test User",
     "customerEmail": "test@example.com",

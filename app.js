@@ -7,6 +7,7 @@ import {
     collection, 
     doc, 
     addDoc, 
+    setDoc,
     getDocs,
     onSnapshot
 } from "./firebase-config.js";
