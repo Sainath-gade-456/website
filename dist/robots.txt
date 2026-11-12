@@ -1,0 +1,11 @@
+# MÈWOS Wear Robots.txt
+# https://mewos.in
+
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin.html
+Disallow: /admin.js
+
+# Sitemap location
+Sitemap: https://mewos.in/sitemap.xml

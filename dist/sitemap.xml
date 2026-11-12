@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    <url>
+        <loc>https://mewos.in/</loc>
+        <lastmod>2026-11-12</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <image:image>
+            <image:loc>https://mewos.in/assets/hero_banner.png</image:loc>
+            <image:title>MÈWOS Luxury Apparel Rack</image:title>
+            <image:caption>Timeless Design, Tailored Perfection - Capsule Wardrobe Collection</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://mewos.in/assets/mewos_trench_coat.png</image:loc>
+            <image:title>MÈWOS Signature Trench</image:title>
+            <image:caption>Double-breasted classic trench coat in heavy organic cotton-canvas</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://mewos.in/assets/mewos_knit_hoodie.png</image:loc>
+            <image:title>MÈWOS Minimalist Knit Hoodie</image:title>
+            <image:caption>480gsm ultra-heavy organic French terry cotton hoodie</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://mewos.in/assets/mewos_linen_shirt.png</image:loc>
+            <image:title>MÈWOS Linen Oversized Shirt</image:title>
+            <image:caption>Relaxed oversized shirt woven from sustainable French linen</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://mewos.in/assets/mewos_tailored_blazer.png</image:loc>
+            <image:title>MÈWOS Tailored Crop Blazer</image:title>
+            <image:caption>Cropped structured double-breasted blazer tailored from recycled wool blend</image:caption>
+        </image:image>
+    </url>
+</urlset>
