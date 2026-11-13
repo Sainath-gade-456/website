@@ -192,6 +192,24 @@ ul {
     gap: 1.5rem;
 }
 
+.nav-search-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.15rem;
+    color: var(--clr-primary);
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-fast);
+}
+
+.nav-search-btn:hover {
+    color: var(--clr-accent-dark);
+    transform: scale(1.08);
+}
+
 .cart-trigger {
     font-size: 1.25rem;
     position: relative;
@@ -457,6 +475,174 @@ ul {
 .value-card p {
     font-size: 0.9rem;
     color: var(--clr-secondary);
+    line-height: 1.6;
+}
+
+/* Collection Search & Filters */
+.collection-search-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-bottom: 2.5rem;
+}
+
+.collection-search-box {
+    position: relative;
+    max-width: 650px;
+    width: 100%;
+}
+
+.collection-search-box .search-icon {
+    position: absolute;
+    left: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--clr-secondary);
+    font-size: 0.95rem;
+    pointer-events: none;
+    transition: color 0.3s ease;
+}
+
+.collection-search-input {
+    width: 100%;
+    padding: 0.95rem 3rem 0.95rem 3rem;
+    background-color: var(--clr-white);
+    border: 1px solid var(--clr-border);
+    border-radius: 2px;
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    color: var(--clr-primary);
+    letter-spacing: 0.02em;
+    transition: var(--transition-smooth);
+}
+
+.collection-search-input:focus {
+    outline: none;
+    border-color: var(--clr-primary);
+    box-shadow: 0 4px 18px rgba(17, 17, 17, 0.06);
+}
+
+.collection-search-input:focus + .search-icon,
+.collection-search-box:focus-within .search-icon {
+    color: var(--clr-primary);
+}
+
+.clear-search-btn {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: var(--clr-secondary);
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 0.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-fast);
+}
+
+.clear-search-btn:hover {
+    color: var(--clr-primary);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.collection-filter-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    align-items: center;
+}
+
+.filter-tag {
+    background-color: transparent;
+    border: 1px solid var(--clr-border);
+    color: var(--clr-secondary);
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.45rem 1.1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.filter-tag:hover {
+    border-color: var(--clr-primary);
+    color: var(--clr-primary);
+}
+
+.filter-tag.active {
+    background-color: var(--clr-primary);
+    border-color: var(--clr-primary);
+    color: var(--clr-white);
+}
+
+.search-feedback-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 0;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px dashed var(--clr-border);
+    font-size: 0.88rem;
+    color: var(--clr-secondary);
+}
+
+.reset-filter-btn {
+    background: transparent;
+    border: none;
+    color: var(--clr-accent-dark);
+    font-weight: 600;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: var(--transition-fast);
+}
+
+.reset-filter-btn:hover {
+    color: var(--clr-primary);
+    text-decoration: underline;
+}
+
+.search-empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 5rem 2rem;
+    background-color: var(--clr-white);
+    border: 1px solid var(--clr-border);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.search-empty-state i {
+    font-size: 2.8rem;
+    color: var(--clr-accent);
+}
+
+.search-empty-state h3 {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--clr-primary);
+}
+
+.search-empty-state p {
+    color: var(--clr-secondary);
+    max-width: 480px;
+    font-size: 0.95rem;
     line-height: 1.6;
 }
 

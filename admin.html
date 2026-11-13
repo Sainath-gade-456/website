@@ -315,6 +315,429 @@
             color: #ffffff;
             padding: 0.7rem 1rem;
             cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-sign-out:hover {
+            border-color: #ffffff;
+        }
+
+        /* Executive Tabs Navigation */
+        .admin-tabs {
+            display: flex;
+            gap: 0.8rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--color-border);
+            padding-bottom: 0.8rem;
+            overflow-x: auto;
+        }
+
+        .admin-tab-btn {
+            background: transparent;
+            border: 1px solid transparent;
+            color: #888888;
+            padding: 0.75rem 1.3rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .admin-tab-btn:hover {
+            color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .admin-tab-btn.active {
+            background-color: #242424;
+            color: #ffffff;
+            border-color: #383838;
+        }
+
+        .tab-badge {
+            background-color: #333333;
+            color: #dddddd;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 2px 7px;
+            border-radius: 10px;
+        }
+
+        .tab-badge.danger {
+            background-color: rgba(255, 77, 77, 0.2);
+            color: #ff6b6b;
+            border: 1px solid rgba(255, 77, 77, 0.4);
+        }
+
+        /* Metric Stats Grid */
+        .admin-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .admin-stat-card {
+            background-color: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            padding: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .stat-icon-wrapper {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            background-color: #242424;
+            color: #d4af37;
+            flex-shrink: 0;
+        }
+
+        .stat-icon-wrapper.danger {
+            color: #ff6b6b;
+            background-color: rgba(255, 77, 77, 0.1);
+        }
+
+        .stat-icon-wrapper.success {
+            color: #4ade80;
+            background-color: rgba(74, 222, 128, 0.1);
+        }
+
+        .stat-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #888888;
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-value {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #ffffff;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* Controls Bar (Search + Filters + Action) */
+        .admin-controls-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            background-color: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            padding: 1rem 1.4rem;
+            border-radius: 4px;
+        }
+
+        .controls-left {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1rem;
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .admin-search-wrapper {
+            position: relative;
+            flex: 1;
+            max-width: 380px;
+            min-width: 220px;
+        }
+
+        .admin-search-wrapper i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666666;
+            font-size: 0.85rem;
+            pointer-events: none;
+        }
+
+        .admin-search-input {
+            width: 100%;
+            background-color: #121212;
+            border: 1px solid #333333;
+            color: #ffffff;
+            padding: 0.65rem 1rem 0.65rem 2.4rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .admin-search-input:focus {
+            border-color: #ffffff;
+        }
+
+        .admin-select {
+            background-color: #121212;
+            border: 1px solid #333333;
+            color: #ffffff;
+            padding: 0.65rem 1.2rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            outline: none;
+            cursor: pointer;
+        }
+
+        /* Table Styling */
+        .admin-table-wrapper {
+            background-color: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.88rem;
+        }
+
+        .admin-table th {
+            background-color: #1a1a1a;
+            color: #888888;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            padding: 1rem 1.2rem;
+            border-bottom: 1px solid var(--color-border);
+            white-space: nowrap;
+        }
+
+        .admin-table td {
+            padding: 1rem 1.2rem;
+            border-bottom: 1px solid #232323;
+            color: #dddddd;
+            vertical-align: middle;
+        }
+
+        .admin-table tr:hover td {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        .admin-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Status & Verification Badges */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.3rem 0.65rem;
+            border-radius: 3px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+        }
+
+        .badge-active {
+            background-color: rgba(74, 222, 128, 0.15);
+            color: #4ade80;
+            border: 1px solid rgba(74, 222, 128, 0.3);
+        }
+
+        .badge-blocked {
+            background-color: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .badge-verified {
+            background-color: rgba(212, 175, 55, 0.15);
+            color: #d4af37;
+            border: 1px solid rgba(212, 175, 55, 0.35);
+        }
+
+        .badge-unverified {
+            background-color: rgba(150, 150, 150, 0.12);
+            color: #9ca3af;
+            border: 1px solid rgba(150, 150, 150, 0.25);
+        }
+
+        .badge-paid {
+            background-color: rgba(74, 222, 128, 0.15);
+            color: #4ade80;
+            border: 1px solid rgba(74, 222, 128, 0.3);
+        }
+
+        .badge-pending {
+            background-color: rgba(234, 179, 8, 0.15);
+            color: #eab308;
+            border: 1px solid rgba(234, 179, 8, 0.3);
+        }
+
+        .badge-failed {
+            background-color: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        /* Action Buttons */
+        .btn-table-action {
+            background-color: transparent;
+            border: 1px solid var(--color-border);
+            color: #ffffff;
+            padding: 0.4rem 0.75rem;
+            font-size: 0.75rem;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            white-space: nowrap;
+        }
+
+        .btn-table-action:hover {
+            background-color: #ffffff;
+            color: #111111;
+        }
+
+        .btn-table-action.danger {
+            color: #ef4444;
+            border-color: rgba(239, 68, 68, 0.35);
+        }
+
+        .btn-table-action.danger:hover {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        .btn-table-action.warning {
+            color: #d4af37;
+            border-color: rgba(212, 175, 55, 0.35);
+        }
+
+        .btn-table-action.warning:hover {
+            background-color: #d4af37;
+            color: #111111;
+        }
+
+        .btn-table-action.success {
+            color: #4ade80;
+            border-color: rgba(74, 222, 128, 0.35);
+        }
+
+        .btn-table-action.success:hover {
+            background-color: #4ade80;
+            color: #111111;
+        }
+
+        /* Customer User Info Cell */
+        .user-cell {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+        }
+
+        .user-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+            border: 1px solid #3d3d3d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #d4af37;
+            flex-shrink: 0;
+        }
+
+        .user-name-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .user-name {
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        .user-subtext {
+            font-size: 0.78rem;
+            color: #888888;
+        }
+
+        .table-empty-cell {
+            text-align: center;
+            padding: 4rem 2rem !important;
+            color: #888888;
+        }
+
+        .table-empty-cell i {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+            color: #555555;
+            display: block;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* User Profile Modal Details */
+        .user-profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-stat-box {
+            background-color: #121212;
+            border: 1px solid var(--color-border);
+            padding: 1rem;
+            border-radius: 4px;
+        }
+
+        .profile-stat-box label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            color: #888888;
+            letter-spacing: 0.05em;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .profile-stat-box span {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ffffff;
         }
     </style>
 </head>
@@ -362,8 +785,8 @@
         
         <header class="admin-header">
             <div class="admin-title-group">
-                <h1>Product Dashboard</h1>
-                <p>Manage your luxury e-commerce catalog in real-time.</p>
+                <h1 id="admin-view-title">Store Administration</h1>
+                <p id="admin-view-desc">Real-time catalog, customer accounts, payment verification & order tracking.</p>
             </div>
             <div class="admin-session-actions">
                 <span class="admin-session-email" id="admin-session-email"></span>
@@ -374,13 +797,231 @@
             </div>
         </header>
 
-        <!-- Product Listing Grid -->
-        <section class="admin-grid" id="admin-products-grid">
-            <div class="admin-state-container" id="admin-loading-state">
-                <i class="fa-solid fa-spinner fa-spin"></i>
-                <p>Retrieving catalog from database...</p>
+        <!-- Navigation Tabs -->
+        <div class="admin-tabs" id="admin-tabs" role="tablist">
+            <button class="admin-tab-btn active" data-tab="products" role="tab" aria-selected="true" id="tab-btn-products">
+                <i class="fa-solid fa-box-open"></i> Products
+                <span class="tab-badge" id="badge-products-count">0</span>
+            </button>
+            <button class="admin-tab-btn" data-tab="users" role="tab" aria-selected="false" id="tab-btn-users">
+                <i class="fa-solid fa-users"></i> User Management
+                <span class="tab-badge" id="badge-users-count">0</span>
+            </button>
+            <button class="admin-tab-btn" data-tab="payments" role="tab" aria-selected="false" id="tab-btn-payments">
+                <i class="fa-solid fa-credit-card"></i> Payments & Orders
+                <span class="tab-badge" id="badge-orders-count">0</span>
+            </button>
+            <button class="admin-tab-btn" data-tab="failed-tx" role="tab" aria-selected="false" id="tab-btn-failed-tx">
+                <i class="fa-solid fa-triangle-exclamation"></i> Failed Transactions
+                <span class="tab-badge" id="badge-failed-count" style="background: rgba(220, 53, 69, 0.2); color: #ff6b6b; border-color: rgba(220, 53, 69, 0.4);">0</span>
+            </button>
+        </div>
+
+        <!-- TAB 1: PRODUCTS -->
+        <div class="tab-content active" id="tab-content-products">
+            <section class="admin-grid" id="admin-products-grid">
+                <div class="admin-state-container" id="admin-loading-state">
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+                    <p>Retrieving catalog from database...</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- TAB 2: USER MANAGEMENT -->
+        <div class="tab-content" id="tab-content-users">
+            <!-- User Summary Stats -->
+            <div class="admin-stats-grid">
+                <div class="admin-stat-card">
+                    <div class="admin-stat-label">Total Customers</div>
+                    <div class="admin-stat-value" id="stat-total-users">0</div>
+                    <div class="admin-stat-sub">Registered buyers</div>
+                </div>
+                <div class="admin-stat-card">
+                    <div class="admin-stat-label">Verified Customers</div>
+                    <div class="admin-stat-value" id="stat-verified-users" style="color: #4ade80;">0</div>
+                    <div class="admin-stat-sub">Trusted accounts</div>
+                </div>
+                <div class="admin-stat-card">
+                    <div class="admin-stat-label">Active Customers</div>
+                    <div class="admin-stat-value" id="stat-active-users" style="color: #60a5fa;">0</div>
+                    <div class="admin-stat-sub">Normal checkout access</div>
+                </div>
+                <div class="admin-stat-card">
+                    <div class="admin-stat-label">Blocked Customers</div>
+                    <div class="admin-stat-value" id="stat-blocked-users" style="color: #f87171;">0</div>
+                    <div class="admin-stat-sub">Restricted from purchasing</div>
+                </div>
             </div>
-        </section>
+
+            <!-- User Filter & Search Controls -->
+            <div class="admin-controls-bar">
+                <input type="text" class="admin-search-input" id="user-search-input" placeholder="Search customer by name, email, phone...">
+                <select class="admin-filter-select" id="user-filter-status">
+                    <option value="all">All Statuses</option>
+                    <option value="active">Active Only</option>
+                    <option value="blocked">Blocked Only</option>
+                    <option value="verified">Verified Only</option>
+                </select>
+                <button class="btn-table-action" id="refresh-users-btn" type="button">
+                    <i class="fa-solid fa-arrows-rotate"></i> Refresh
+                </button>
+                <button class="btn-table-action" id="open-add-user-btn" type="button" style="background:#d4af37; color:#111; font-weight:600;">
+                    <i class="fa-solid fa-user-plus"></i> Add Customer
+                </button>
+            </div>
+
+            <!-- Users Table -->
+            <div class="admin-table-wrapper">
+                <table class="admin-table" id="admin-users-table">
+                    <thead>
+                        <tr>
+                            <th>Customer</th>
+                            <th>Contact & City</th>
+                            <th>Status & Verification</th>
+                            <th>Orders / Spend</th>
+                            <th>Joined / Last Active</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-users-table-body">
+                        <tr>
+                            <td colspan="6" class="table-empty-cell">
+                                <i class="fa-solid fa-spinner fa-spin"></i>
+                                Loading customer database...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- TAB 3: PAYMENTS & TRACKING -->
+        <div class="tab-content" id="tab-content-payments">
+            <!-- Payment & Fulfillment Stats -->
+            <div class="admin-stats-grid">
+                <div class="admin-stat-card">
+                    <div class="admin-stat-label">Total Revenue</div>
+                    <div class="admin-stat-value" id="stat-total-revenue" style="color: #d4af37;">₹0</div>
+                    <div class="admin-stat-sub" id="stat-total-orders-count">0 orders total</div>
+                </div>
+                <div class="admin-stat-card">
+                    <div class="admin-stat-label">Paid / Captured</div>
+                    <div class="admin-stat-value" id="stat-paid-orders" style="color: #4ade80;">0</div>
+                    <div class="admin-stat-sub">Prepaid via Razorpay</div>
+                </div>
+                <div class="admin-stat-card">
+                    <div class="admin-stat-label">Cash on Delivery (COD)</div>
+                    <div class="admin-stat-value" id="stat-cod-orders" style="color: #fbbf24;">0</div>
+                    <div class="admin-stat-sub">Payment pending on delivery</div>
+                </div>
+                <div class="admin-stat-card">
+                    <div class="admin-stat-label">Fulfilled & Shipped</div>
+                    <div class="admin-stat-value" id="stat-shipped-orders" style="color: #60a5fa;">0</div>
+                    <div class="admin-stat-sub">Orders tracked with carrier</div>
+                </div>
+            </div>
+
+            <!-- Transaction Search & Filters -->
+            <div class="admin-controls-bar">
+                <input type="text" class="admin-search-input" id="tx-search-input" placeholder="Search Order ID, Payment ID, Customer, Tracking #...">
+                <select class="admin-filter-select" id="tx-filter-status">
+                    <option value="all">All Order Statuses</option>
+                    <option value="paid">Paid</option>
+                    <option value="pending">Pending</option>
+                    <option value="processing">Processing</option>
+                    <option value="shipped">Shipped</option>
+                    <option value="delivered">Delivered</option>
+                    <option value="cancelled">Cancelled</option>
+                </select>
+                <select class="admin-filter-select" id="tx-filter-method">
+                    <option value="all">All Payment Methods</option>
+                    <option value="razorpay">Razorpay (Card/UPI)</option>
+                    <option value="cod">Cash on Delivery (COD)</option>
+                </select>
+                <button class="btn-table-action" id="refresh-tx-btn" type="button">
+                    <i class="fa-solid fa-arrows-rotate"></i> Refresh
+                </button>
+            </div>
+
+            <!-- Orders & Transactions Table -->
+            <div class="admin-table-wrapper">
+                <table class="admin-table" id="admin-tx-table">
+                    <thead>
+                        <tr>
+                            <th>Order ID & Date</th>
+                            <th>Customer</th>
+                            <th>Items & Total</th>
+                            <th>Payment Method & ID</th>
+                            <th>Order Status</th>
+                            <th>Tracking & Carrier</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-tx-table-body">
+                        <tr>
+                            <td colspan="7" class="table-empty-cell">
+                                <i class="fa-solid fa-spinner fa-spin"></i>
+                                Loading transaction and order data...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- TAB 4: FAILED TRANSACTIONS -->
+        <div class="tab-content" id="tab-content-failed-tx">
+            <!-- Failed Tx Stats -->
+            <div class="admin-stats-grid">
+                <div class="admin-stat-card">
+                    <div class="admin-stat-label">Total Failed Attempts</div>
+                    <div class="admin-stat-value" id="stat-failed-count" style="color: #f87171;">0</div>
+                    <div class="admin-stat-sub">Declined or aborted attempts</div>
+                </div>
+                <div class="admin-stat-card">
+                    <div class="admin-stat-label">Lost / Recoverable Revenue</div>
+                    <div class="admin-stat-value" id="stat-failed-amount" style="color: #fbbf24;">₹0</div>
+                    <div class="admin-stat-sub">Total value of failed carts</div>
+                </div>
+                <div class="admin-stat-card" style="grid-column: span 2;">
+                    <div class="admin-stat-label">Primary Drop-off Reason</div>
+                    <div class="admin-stat-value" id="stat-failed-reason" style="font-size: 1.15rem; color: #e5e5e5; font-weight: 500;">None logged yet</div>
+                    <div class="admin-stat-sub">Top payment failure or user abandonment stage</div>
+                </div>
+            </div>
+
+            <!-- Failed Tx Controls -->
+            <div class="admin-controls-bar">
+                <input type="text" class="admin-search-input" id="failed-search-input" placeholder="Search Failed Tx ID, customer email, error reason...">
+                <button class="btn-table-action" id="refresh-failed-btn" type="button">
+                    <i class="fa-solid fa-arrows-rotate"></i> Refresh
+                </button>
+            </div>
+
+            <!-- Failed Transactions Table -->
+            <div class="admin-table-wrapper">
+                <table class="admin-table" id="admin-failed-table">
+                    <thead>
+                        <tr>
+                            <th>Tx ID & Timestamp</th>
+                            <th>Customer</th>
+                            <th>Attempted Total</th>
+                            <th>Payment Gateway</th>
+                            <th>Decline Reason / Stage</th>
+                            <th>Recovery Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-failed-table-body">
+                        <tr>
+                            <td colspan="6" class="table-empty-cell">
+                                <i class="fa-solid fa-shield-check" style="color: #4ade80;"></i>
+                                No failed transactions logged.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
     </main>
 
@@ -454,6 +1095,222 @@
         </div>
     </div>
 
+    <!-- USER MANAGE MODAL -->
+    <div class="modal-overlay" id="user-manage-modal">
+        <div class="modal-content admin-modal-content" style="max-width: 650px;">
+            <div class="admin-modal-header">
+                <div>
+                    <h2 id="user-modal-title">Customer Profile</h2>
+                    <p style="font-size:0.8rem; color:#888; margin-top:0.2rem;" id="user-modal-subtitle">ID: cust_12345</p>
+                </div>
+                <button class="close-modal-btn" id="close-user-manage-modal-btn" type="button"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div style="padding: 1.5rem 0 0.5rem;">
+                <!-- Profile stats grid -->
+                <div class="user-profile-grid">
+                    <div class="profile-stat-box">
+                        <label>Account Status</label>
+                        <span id="user-modal-status-badge"></span>
+                    </div>
+                    <div class="profile-stat-box">
+                        <label>Verification</label>
+                        <span id="user-modal-verify-badge"></span>
+                    </div>
+                    <div class="profile-stat-box">
+                        <label>Total Orders</label>
+                        <span id="user-modal-orders-count">0</span>
+                    </div>
+                    <div class="profile-stat-box">
+                        <label>Lifetime Spend</label>
+                        <span id="user-modal-total-spend">₹0</span>
+                    </div>
+                </div>
+
+                <!-- Customer Details -->
+                <div style="background:#151515; border:1px solid #2a2a2a; border-radius:4px; padding:1.2rem; margin-bottom:1.5rem;">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:0.8rem;">
+                        <span style="color:#888; font-size:0.85rem;">Full Name:</span>
+                        <strong style="color:#fff; font-size:0.95rem;" id="user-modal-name">-</strong>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; margin-bottom:0.8rem;">
+                        <span style="color:#888; font-size:0.85rem;">Email Address:</span>
+                        <strong style="color:#fff; font-size:0.95rem;" id="user-modal-email">-</strong>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; margin-bottom:0.8rem;">
+                        <span style="color:#888; font-size:0.85rem;">Phone Number:</span>
+                        <strong style="color:#fff; font-size:0.95rem;" id="user-modal-phone">-</strong>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; margin-bottom:0.8rem;">
+                        <span style="color:#888; font-size:0.85rem;">Shipping Address:</span>
+                        <span style="color:#ccc; font-size:0.85rem; max-width:60%; text-align:right;" id="user-modal-address">-</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between;">
+                        <span style="color:#888; font-size:0.85rem;">Joined Date:</span>
+                        <span style="color:#ccc; font-size:0.85rem;" id="user-modal-created">-</span>
+                    </div>
+                </div>
+
+                <!-- Admin Notes -->
+                <div class="form-group">
+                    <label for="user-admin-notes">Internal Administrator Notes</label>
+                    <textarea id="user-admin-notes" rows="3" placeholder="Add confidential notes on this customer (e.g. VIP client, preferred sizing, payment history)..." style="width:100%;"></textarea>
+                    <div style="margin-top:0.6rem; text-align:right;">
+                        <button class="btn-table-action" id="save-user-notes-btn" type="button" style="background:#d4af37; color:#111; font-weight:600; padding:0.5rem 1.2rem;">
+                            <i class="fa-solid fa-floppy-disk"></i> Save Notes
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Customer Action Buttons -->
+                <div style="display:flex; gap:0.8rem; margin-top:1.5rem; flex-wrap:wrap; border-top:1px solid #2a2a2a; padding-top:1.2rem;">
+                    <button type="button" class="btn-table-action warning" id="user-modal-toggle-block-btn" style="flex:1; justify-content:center; padding:0.75rem 1rem;">
+                        <i class="fa-solid fa-ban"></i> Block Account
+                    </button>
+                    <button type="button" class="btn-table-action success" id="user-modal-toggle-verify-btn" style="flex:1; justify-content:center; padding:0.75rem 1rem;">
+                        <i class="fa-solid fa-circle-check"></i> Verify Customer
+                    </button>
+                    <a id="user-modal-email-btn" href="#" class="btn-table-action" style="flex:1; justify-content:center; padding:0.75rem 1rem; text-decoration:none; color:#e5e5e5;">
+                        <i class="fa-solid fa-envelope"></i> Send Email
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADD CUSTOMER MODAL -->
+    <div class="modal-overlay" id="add-user-modal">
+        <div class="modal-content admin-modal-content">
+            <div class="admin-modal-header">
+                <h2>Add Customer Account</h2>
+                <button class="close-modal-btn" id="close-add-user-modal-btn" type="button"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <form id="add-user-form" novalidate>
+                <div class="form-group">
+                    <label for="new-user-name">Full Name *</label>
+                    <input type="text" id="new-user-name" required placeholder="e.g. Eleanor Vance">
+                </div>
+                <div class="form-group">
+                    <label for="new-user-email">Email Address *</label>
+                    <input type="email" id="new-user-email" required placeholder="e.g. client@example.com">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="new-user-phone">Phone Number</label>
+                        <input type="tel" id="new-user-phone" placeholder="e.g. +91 98765 43210">
+                    </div>
+                    <div class="form-group">
+                        <label for="new-user-status">Initial Status</label>
+                        <select id="new-user-status" class="admin-filter-select" style="width:100%; height:44px;">
+                            <option value="active">Active</option>
+                            <option value="blocked">Blocked</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="new-user-address">Shipping Address</label>
+                    <input type="text" id="new-user-address" placeholder="e.g. 42 Park Avenue, Mumbai, 400001">
+                </div>
+                <div class="form-group">
+                    <label class="admin-checkbox-label">
+                        <input type="checkbox" id="new-user-verified"> Verified Customer (Trusted buyer)
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="new-user-notes">Administrator Notes</label>
+                    <textarea id="new-user-notes" rows="2" placeholder="Optional background or referral info"></textarea>
+                </div>
+                <div style="margin-top: 1.5rem;">
+                    <button type="submit" class="submit-order-btn" id="save-new-user-btn">CREATE CUSTOMER</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ORDER DETAILS & TRACKING MODAL -->
+    <div class="modal-overlay" id="order-details-modal">
+        <div class="modal-content admin-modal-content" style="max-width: 700px;">
+            <div class="admin-modal-header">
+                <div>
+                    <h2 id="order-modal-title">Order #MEWOS-1234</h2>
+                    <p style="font-size:0.8rem; color:#888; margin-top:0.2rem;" id="order-modal-date">Placed on Nov 12, 2026</p>
+                </div>
+                <button class="close-modal-btn" id="close-order-modal-btn" type="button"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div style="padding: 1.5rem 0 0.5rem;">
+                <!-- Summary bar -->
+                <div class="user-profile-grid" style="margin-bottom:1.5rem;">
+                    <div class="profile-stat-box">
+                        <label>Customer</label>
+                        <span id="order-modal-customer" style="font-size:0.95rem;">-</span>
+                    </div>
+                    <div class="profile-stat-box">
+                        <label>Total Value</label>
+                        <span id="order-modal-amount" style="color:#d4af37;">₹0</span>
+                    </div>
+                    <div class="profile-stat-box">
+                        <label>Payment Method</label>
+                        <span id="order-modal-payment" style="font-size:0.95rem;">-</span>
+                    </div>
+                    <div class="profile-stat-box">
+                        <label>Current Status</label>
+                        <span id="order-modal-status-badge"></span>
+                    </div>
+                </div>
+
+                <!-- Customer & Address -->
+                <div style="background:#151515; border:1px solid #2a2a2a; border-radius:4px; padding:1.2rem; margin-bottom:1.5rem;">
+                    <h4 style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em; color:#888; margin-bottom:0.6rem;">Shipping & Delivery Address</h4>
+                    <p style="color:#e5e5e5; font-size:0.9rem; line-height:1.5;" id="order-modal-address">-</p>
+                </div>
+
+                <!-- Line Items Table -->
+                <div style="margin-bottom:1.5rem;">
+                    <h4 style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em; color:#888; margin-bottom:0.6rem;">Purchased Items</h4>
+                    <div style="max-height:200px; overflow-y:auto; border:1px solid #2a2a2a; border-radius:4px;" id="order-modal-items-list">
+                        <!-- Items rendered here -->
+                    </div>
+                </div>
+
+                <!-- Tracking & Status Management Form -->
+                <form id="order-fulfillment-form" style="background:#161616; border:1px solid #333; border-radius:4px; padding:1.2rem;">
+                    <h4 style="font-size:0.85rem; text-transform:uppercase; letter-spacing:0.05em; color:#d4af37; margin-bottom:1rem;">
+                        <i class="fa-solid fa-truck-fast"></i> Update Order Status & Fulfillment Tracking
+                    </h4>
+                    <input type="hidden" id="order-update-id">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="order-status-select">Order Status</label>
+                            <select id="order-status-select" class="admin-filter-select" style="width:100%; height:44px;">
+                                <option value="paid">Paid</option>
+                                <option value="pending">Pending</option>
+                                <option value="processing">Processing</option>
+                                <option value="shipped">Shipped</option>
+                                <option value="delivered">Delivered</option>
+                                <option value="cancelled">Cancelled</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="order-tracking-input">Tracking Number</label>
+                            <input type="text" id="order-tracking-input" placeholder="e.g. TRK-BLR-8921">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="order-carrier-input">Logistics Partner / Carrier</label>
+                        <input type="text" id="order-carrier-input" placeholder="e.g. Delhivery, Bluedart, Shiprocket">
+                    </div>
+                    <div style="margin-top:1rem; text-align:right;">
+                        <button type="submit" class="submit-order-btn" id="save-order-status-btn" style="display:inline-block; width:auto; padding:0.75rem 2rem;">
+                            SAVE STATUS & TRACKING
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <!-- TOAST NOTIFICATION -->
     <div class="toast" id="toast">
         <div class="toast-content">
@@ -461,6 +1318,9 @@
             <span class="toast-msg" id="toast-message">Operation successful</span>
         </div>
     </div>
+
+    <!-- Runtime Config Injection Point -->
+    <!-- FIREBASE_CONFIG_INJECT -->
 
     <!-- Firebase Connection script -->
     <script type="module" src="admin.js"></script>

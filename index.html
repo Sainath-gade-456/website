@@ -69,6 +69,9 @@
             </ul>
 
             <div class="nav-actions">
+                <button class="nav-search-btn" id="nav-search-btn" aria-label="Search Collection" title="Search Collection">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
                 <div class="cart-trigger" id="cart-nav-btn">
                     <i class="fa-solid fa-bag-shopping"></i>
                     <span class="cart-badge" id="cart-count">0</span>
@@ -119,6 +122,30 @@
                         <h2 class="section-title">The Capsule Collection</h2>
                     </div>
                     <p class="section-desc">Clean lines, neutral tones, and premium comfort. Buy directly from our landing page with instantaneous checkout.</p>
+                </div>
+
+                <!-- Collection Search & Filter Bar -->
+                <div class="collection-search-container" id="collection-search-container">
+                    <div class="collection-search-box">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        <input type="text" id="collection-search-input" class="collection-search-input" placeholder="Search pieces by name, fabric, cut, style..." autocomplete="off" spellcheck="false">
+                        <button type="button" class="clear-search-btn" id="clear-search-btn" aria-label="Clear Search" style="display: none;">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                    <div class="collection-filter-tags" id="collection-filter-tags">
+                        <button type="button" class="filter-tag active" data-category="all">All Pieces</button>
+                        <button type="button" class="filter-tag" data-category="trench">Outerwear</button>
+                        <button type="button" class="filter-tag" data-category="hoodie">Knitwear</button>
+                        <button type="button" class="filter-tag" data-category="shirt">Linen</button>
+                        <button type="button" class="filter-tag" data-category="blazer">Tailored</button>
+                    </div>
+                </div>
+
+                <!-- Search Results Counter & Feedback -->
+                <div class="search-feedback-bar" id="search-feedback-bar" style="display: none;">
+                    <span id="search-feedback-text">Showing pieces</span>
+                    <button class="reset-filter-btn" id="reset-filter-btn" type="button"><i class="fa-solid fa-rotate-left"></i> Reset Filter</button>
                 </div>
 
                 <div class="products-grid" id="products-grid">

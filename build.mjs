@@ -52,6 +52,14 @@ async function buildOnce() {
     fs.copyFileSync(path.join(ROOT, 'styles.css'), path.join(DIST, 'styles.css'));
   }
 
+  if (fs.existsSync(path.join(ROOT, 'robots.txt'))) {
+    fs.copyFileSync(path.join(ROOT, 'robots.txt'), path.join(DIST, 'robots.txt'));
+  }
+
+  if (fs.existsSync(path.join(ROOT, 'sitemap.xml'))) {
+    fs.copyFileSync(path.join(ROOT, 'sitemap.xml'), path.join(DIST, 'sitemap.xml'));
+  }
+
   copyDirSync(path.join(ROOT, 'assets'), path.join(DIST, 'assets'));
 
   // Copy and adjust HTML files to point to built assets
@@ -88,6 +96,12 @@ async function watchMode() {
         try {
           if (fs.existsSync(path.join(ROOT, 'styles.css'))) {
             fs.copyFileSync(path.join(ROOT, 'styles.css'), path.join(DIST, 'styles.css'));
+          }
+          if (fs.existsSync(path.join(ROOT, 'robots.txt'))) {
+            fs.copyFileSync(path.join(ROOT, 'robots.txt'), path.join(DIST, 'robots.txt'));
+          }
+          if (fs.existsSync(path.join(ROOT, 'sitemap.xml'))) {
+            fs.copyFileSync(path.join(ROOT, 'sitemap.xml'), path.join(DIST, 'sitemap.xml'));
           }
           copyDirSync(path.join(ROOT, 'assets'), path.join(DIST, 'assets'));
 

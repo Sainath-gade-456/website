@@ -1,3 +1,17 @@
+# Dependencies
 node_modules/
+
+# Environment and sensitive keys
 .env
+.env*
+users.json
+data/customers.json
+data/failed-transactions.json
+
+# Logs and Firebase cache
+firebase-debug.log*
+.firebase/
+
+# OS / Editor artifacts
 .DS_Store
+Thumbs.db

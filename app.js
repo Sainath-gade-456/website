@@ -129,6 +129,8 @@ async function loadProducts() {
 let cart = JSON.parse(localStorage.getItem('mewos_cart')) || [];
 let selectedModalSize = "M"; // Default modal size select
 let trackingInterval = null;
+let searchQuery = "";
+let selectedCategory = "all";
 
 // DOM Elements
 const productsGrid = document.getElementById('products-grid');
@@ -140,6 +142,15 @@ const cartItemsContainer = document.getElementById('cart-items-container');
 const cartTotalPrice = document.getElementById('cart-total-price');
 const cartCountBadge = document.getElementById('cart-count');
 const cartCheckoutBtn = document.getElementById('cart-checkout-btn');
+
+// Search & Filter DOM Elements
+const navSearchBtn = document.getElementById('nav-search-btn');
+const collectionSearchInput = document.getElementById('collection-search-input');
+const clearSearchBtn = document.getElementById('clear-search-btn');
+const filterTags = document.querySelectorAll('.filter-tag');
+const searchFeedbackBar = document.getElementById('search-feedback-bar');
+const searchFeedbackText = document.getElementById('search-feedback-text');
+const resetFilterBtn = document.getElementById('reset-filter-btn');
 
 // Mobile Nav DOM
 const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -271,6 +282,50 @@ function setupEventListeners() {
             }
         });
     }
+
+    // Collection Search & Filter Triggers
+    if (collectionSearchInput) {
+        collectionSearchInput.addEventListener('input', (e) => {
+            searchQuery = e.target.value;
+            filterProducts();
+        });
+    }
+
+    if (clearSearchBtn) {
+        clearSearchBtn.addEventListener('click', () => {
+            searchQuery = "";
+            if (collectionSearchInput) collectionSearchInput.value = "";
+            filterProducts();
+            if (collectionSearchInput) collectionSearchInput.focus();
+        });
+    }
+
+    if (navSearchBtn) {
+        navSearchBtn.addEventListener('click', () => {
+            const shopSection = document.getElementById('shop');
+            if (shopSection) {
+                shopSection.scrollIntoView({ behavior: 'smooth' });
+                setTimeout(() => {
+                    if (collectionSearchInput) collectionSearchInput.focus();
+                }, 400);
+            }
+        });
+    }
+
+    if (filterTags && filterTags.length > 0) {
+        filterTags.forEach(tagBtn => {
+            tagBtn.addEventListener('click', () => {
+                filterTags.forEach(b => b.classList.remove('active'));
+                tagBtn.classList.add('active');
+                selectedCategory = tagBtn.dataset.category || 'all';
+                filterProducts();
+            });
+        });
+    }
+
+    if (resetFilterBtn) {
+        resetFilterBtn.addEventListener('click', resetSearchAndFilters);
+    }
 }
 
 // Toggle checkout inputs based on chosen payment method
@@ -278,19 +333,102 @@ function togglePaymentInputFields() {
     // Razorpay Checkout collects card and UPI details outside this page.
 }
 
-// Render product list onto the main page grid
-function renderProducts() {
-    productsGrid.innerHTML = PRODUCTS.map(product => {
+function escapeHtml(str) {
+    if (!str) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+function filterProducts() {
+    const q = searchQuery.trim().toLowerCase();
+
+    const filtered = PRODUCTS.filter(product => {
+        let matchesCategory = true;
+        if (selectedCategory !== 'all') {
+            const name = (product.name || '').toLowerCase();
+            const desc = (product.description || '').toLowerCase();
+            matchesCategory = name.includes(selectedCategory) || desc.includes(selectedCategory);
+        }
+
+        let matchesQuery = true;
+        if (q) {
+            const name = (product.name || '').toLowerCase();
+            const desc = (product.description || '').toLowerCase();
+            const sizes = (product.sizes || []).join(' ').toLowerCase();
+            matchesQuery = name.includes(q) || desc.includes(q) || sizes.includes(q);
+        }
+
+        return matchesCategory && matchesQuery;
+    });
+
+    renderProducts(filtered);
+
+    if (clearSearchBtn) {
+        clearSearchBtn.style.display = q ? 'flex' : 'none';
+    }
+
+    if (searchFeedbackBar) {
+        if (q || selectedCategory !== 'all') {
+            searchFeedbackBar.style.display = 'flex';
+            let msg = `Showing ${filtered.length} of ${PRODUCTS.length} piece${PRODUCTS.length === 1 ? '' : 's'}`;
+            if (q) msg += ` matching "${escapeHtml(q)}"`;
+            if (selectedCategory !== 'all') msg += ` in ${selectedCategory.toUpperCase()}`;
+            if (searchFeedbackText) searchFeedbackText.textContent = msg;
+        } else {
+            searchFeedbackBar.style.display = 'none';
+        }
+    }
+}
+
+function resetSearchAndFilters() {
+    searchQuery = "";
+    selectedCategory = "all";
+    if (collectionSearchInput) collectionSearchInput.value = "";
+    if (clearSearchBtn) clearSearchBtn.style.display = "none";
+    if (searchFeedbackBar) searchFeedbackBar.style.display = "none";
+    if (filterTags) {
+        filterTags.forEach(b => {
+            if (b.dataset.category === 'all') b.classList.add('active');
+            else b.classList.remove('active');
+        });
+    }
+    renderProducts(PRODUCTS);
+}
+window.resetSearchAndFilters = resetSearchAndFilters;
+
+// Render product list onto the main page grid (supports filtering)
+function renderProducts(itemsToRender = null) {
+    const list = itemsToRender !== null ? itemsToRender : PRODUCTS;
+
+    if (list.length === 0) {
+        productsGrid.innerHTML = `
+            <div class="search-empty-state">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <h3>No Luxury Pieces Found</h3>
+                <p>No capsule pieces match your search criteria. Try searching for "trench", "linen", "hoodie", or "blazer".</p>
+                <button type="button" class="cta-btn-primary" onclick="resetSearchAndFilters()">
+                    View All Pieces <i class="fa-solid fa-arrow-rotate-left"></i>
+                </button>
+            </div>
+        `;
+        return;
+    }
+
+    productsGrid.innerHTML = list.map(product => {
         return `
             <article class="product-card" data-id="${product.id}">
                 <div class="product-card-image-wrapper" onclick="openProductQuickView(${product.id})">
-                    <img src="${product.image}" alt="${product.name}" class="product-card-image" loading="lazy">
+                    <img src="${product.image}" alt="${escapeHtml(product.name)}" class="product-card-image" loading="lazy">
                     <div class="product-card-hover-overlay">
                         <button class="quick-view-trigger-btn">Quick View</button>
                     </div>
                 </div>
                 <div class="product-card-info">
-                    <h3 class="product-card-title" onclick="openProductQuickView(${product.id})">${product.name}</h3>
+                    <h3 class="product-card-title" onclick="openProductQuickView(${product.id})">${escapeHtml(product.name)}</h3>
                     <div class="product-card-rating">
                         <i class="fa-solid fa-star"></i> <span>${product.rating} / 5.0</span>
                     </div>
@@ -520,7 +658,7 @@ function resetValidationErrors() {
 }
 
 // Validation Logic & Order Processing
-function handleCheckoutSubmit(e) {
+async function handleCheckoutSubmit(e) {
     e.preventDefault();
     resetValidationErrors();
 
@@ -566,6 +704,21 @@ function handleCheckoutSubmit(e) {
         return;
     }
 
+    // Check if customer email or phone is blocked
+    try {
+        const backendBase = (typeof window !== 'undefined' && window.__BACKEND_API_URL__) ? window.__BACKEND_API_URL__ : '';
+        const statusEndpoint = backendBase 
+            ? `${backendBase.replace(/\/$/, '')}/api/check-customer-status?email=${encodeURIComponent(emailInput.value.trim())}&phone=${encodeURIComponent(strippedPhone)}`
+            : `/api/check-customer-status?email=${encodeURIComponent(emailInput.value.trim())}&phone=${encodeURIComponent(strippedPhone)}`;
+        const checkRes = await fetch(statusEndpoint).then(r => r.json()).catch(() => null);
+        if (checkRes && checkRes.status === 'blocked') {
+            showToast("This account is restricted. Contact support@mewos.in", "fa-solid fa-ban");
+            return;
+        }
+    } catch (checkErr) {
+        console.warn('Customer status check notice:', checkErr);
+    }
+
     // Success! Process Order
     const subtotal = cart.reduce((sum, item) => {
         const p = PRODUCTS.find(prod => prod.id === item.id);
@@ -600,6 +753,28 @@ function invalidateField(inputElement, errorMessage) {
     const errorSpan = formGroup.querySelector('.error-msg');
     if (errorSpan) {
         errorSpan.textContent = errorMessage;
+    }
+}
+
+async function reportFailedTransaction(failureData) {
+    try {
+        const payload = {
+            ...failureData,
+            createdAt: new Date().toISOString()
+        };
+
+        const backendBase = (typeof window !== 'undefined' && window.__BACKEND_API_URL__) ? window.__BACKEND_API_URL__ : '';
+        const endpoint = backendBase ? `${backendBase.replace(/\/$/, '')}/api/payment/failed` : '/api/payment/failed';
+        
+        fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        }).catch(() => {});
+
+        addDoc(collection(db, "failedTransactions"), payload).catch(() => {});
+    } catch (e) {
+        console.warn("Failed transaction recording notice:", e);
     }
 }
 
@@ -641,10 +816,41 @@ async function startRazorpayPayment(orderDetails, orderId) {
                 contact: orderDetails.phone
             },
             handler: resolve,
-            modal: { ondismiss: () => reject(new Error('Payment was cancelled.')) }
+            modal: {
+                ondismiss: async () => {
+                    await reportFailedTransaction({
+                        orderId,
+                        customerName: orderDetails.name,
+                        customerEmail: orderDetails.email,
+                        customerPhone: orderDetails.phone,
+                        amount: orderDetails.subtotal,
+                        paymentMethod: orderDetails.paymentMethod,
+                        error: 'Customer closed payment window before completing payment',
+                        errorCode: 'CHECKOUT_DISMISSED',
+                        step: 'checkout_modal'
+                    });
+                    reject(new Error('Payment was cancelled.'));
+                }
+            }
         });
 
-        razorpay.on('payment.failed', () => reject(new Error('Payment failed.')));
+        razorpay.on('payment.failed', async (resp) => {
+            const reason = resp.error?.description || 'Payment declined by bank';
+            await reportFailedTransaction({
+                orderId,
+                customerName: orderDetails.name,
+                customerEmail: orderDetails.email,
+                customerPhone: orderDetails.phone,
+                amount: orderDetails.subtotal,
+                paymentMethod: orderDetails.paymentMethod,
+                error: reason,
+                errorCode: resp.error?.code || 'PAYMENT_FAILED',
+                step: resp.error?.step || 'payment_authorization',
+                razorpayPaymentId: resp.error?.metadata?.payment_id || null
+            });
+            reject(new Error(reason));
+        });
+
         razorpay.open();
     });
 }

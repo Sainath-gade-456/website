@@ -52,6 +52,16 @@ async function inject() {
   } else {
     console.warn('Injection marker not found in index.html; skipping injection.');
   }
+
+  const adminPath = path.join(DIST, 'admin.html');
+  if (fs.existsSync(adminPath)) {
+    let adminHtml = fs.readFileSync(adminPath, 'utf8');
+    if (adminHtml.includes('<!-- FIREBASE_CONFIG_INJECT -->')) {
+      adminHtml = adminHtml.replace('<!-- FIREBASE_CONFIG_INJECT -->', scriptTag);
+      fs.writeFileSync(adminPath, adminHtml, 'utf8');
+      console.log('Injected runtime config into dist/admin.html');
+    }
+  }
 }
 
 inject().catch(err => {

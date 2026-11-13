@@ -9,3 +9,4 @@ Disallow: /admin.js
 
 # Sitemap location
 Sitemap: https://mewos.in/sitemap.xml
+

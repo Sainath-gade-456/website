@@ -1,28 +1,138 @@
 rules_version = '2';
 
+// ===============================================================
+// Assumed Data Model & Architecture
+// ===============================================================
+//
+// Application: MÈWOS Wear Luxury E-Commerce Platform
+//
+// 1. Collection: /products/{productId}
+//    - Public catalog for e-commerce storefront browsing.
+//    - Fields:
+//        - id: number (numeric product id)
+//        - name: string (product title)
+//        - price: number (price in INR)
+//        - rating: number (customer rating)
+//        - image: string (image asset URL or relative path)
+//        - description: string (product editorial copy)
+//        - sizes: list of strings (available sizes, e.g., ['S', 'M', 'L'])
+//    - Permissions:
+//        - read: public (allow read: if true;)
+//        - write: administrators only (allow write: if isAdmin();)
+//
+// 2. Collection: /users/{userId} & /customers/{userId}
+//    - Customer management documents (CRM).
+//    - Fields:
+//        - name: string (patron full name)
+//        - email: string (customer email)
+//        - phone: string (customer phone)
+//        - status: string ('active' or 'blocked')
+//        - verified: bool (verification state)
+//        - ordersCount: number (accumulated order count)
+//        - totalSpent: number (cumulative spend)
+//        - notes: string (administrative CRM notes)
+//    - Permissions:
+//        - read, write: administrators only (allow read, write: if isAdmin();)
+//        - create, update: authenticated patron matching userId (allow create, update: if request.auth != null && request.auth.uid == userId;)
+//
+// 3. Collection: /orders/{orderId}
+//    - Customer orders placed via storefront checkout or backend fulfillment.
+//    - Fields:
+//        - orderId: string (e.g., 'MEW-...')
+//        - customerName: string
+//        - customerEmail: string
+//        - customerPhone: string
+//        - shippingAddress: string
+//        - paymentMethod: string ('cod' or 'razorpay')
+//        - paymentStatus: string ('pending', 'captured')
+//        - subtotal: number
+//        - items: list of items
+//        - status: string ('placed', etc.)
+//        - supplierOrderId: string
+//        - trackingNumber: string
+//        - createdAt: string or timestamp
+//    - Permissions:
+//        - read, write: administrators only (allow read, write: if isAdmin();)
+//
+// 4. Collection: /failedTransactions/{txId}
+//    - Payment failure tracking logs created by storefront checkout when payment fails or is declined.
+//    - Required keys:
+//        - orderId: string / identifier
+//        - amount: number
+//        - customerEmail: string
+//    - Permissions:
+//        - create: allowed if request.resource.data.keys().hasAll(['orderId', 'amount', 'customerEmail'])
+//        - read, update, delete: administrators only (allow read, update, delete: if isAdmin();)
+//
+// 5. Collection: /dropshippingLogs/{logId}
+//    - Operational dropshipping logs synchronized with suppliers.
+//    - Fields:
+//        - orderId: string
+//        - supplierOrderId: string
+//        - trackingNumber: string
+//        - supplierStatus: string
+//        - note: string
+//        - createdAt: string or timestamp
+//    - Permissions:
+//        - read, write: administrators only (allow read, write: if isAdmin();)
+//
+// 6. Collection: /subscribers/{subscriberId}
+//    - Newsletter mailing list subscriptions.
+//    - Fields:
+//        - email: string (validated format)
+//        - subscribedAt: timestamp (optional)
+//    - Permissions:
+//        - create: open to any visitor with valid email format
+//        - read, update, delete: administrators only (allow read, update, delete: if isAdmin();)
+//
+// ===============================================================
+
 service cloud.firestore {
   match /databases/{database}/documents {
+
+    // Helper Functions
     function isAdmin() {
       return request.auth != null && request.auth.token.admin == true;
     }
 
+    // 1. Products Catalog
     match /products/{productId} {
       allow read: if true;
       allow write: if isAdmin();
     }
 
+    // 2. Customer Management (Users & Customers)
+    match /users/{userId} {
+      allow read, write: if isAdmin();
+      allow create, update: if request.auth != null && request.auth.uid == userId;
+    }
+
+    match /customers/{userId} {
+      allow read, write: if isAdmin();
+      allow create, update: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // 3. Orders
+    match /orders/{orderId} {
+      allow read, write: if isAdmin();
+    }
+
+    // 4. Failed Transactions
+    match /failedTransactions/{txId} {
+      allow create: if request.resource.data.keys().hasAll(['orderId', 'amount', 'customerEmail']);
+      allow read, update, delete: if isAdmin();
+    }
+
+    // 5. Dropshipping Logs
+    match /dropshippingLogs/{logId} {
+      allow read, write: if isAdmin();
+    }
+
+    // 6. Newsletter Subscribers
     match /subscribers/{subscriberId} {
       allow create: if request.resource.data.email is string
         && request.resource.data.email.matches('^.+@.+\\..+$');
       allow read, update, delete: if isAdmin();
-    }
-
-    match /orders/{orderId} {
-      allow read, write: if false;
-    }
-
-    match /dropshippingLogs/{logId} {
-      allow read, write: if isAdmin();
     }
   }
 }
