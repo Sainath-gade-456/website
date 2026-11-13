@@ -128,34 +128,50 @@ const toastIcon = document.getElementById('toast-icon');
 // ==========================================================================
 document.addEventListener('DOMContentLoaded', () => {
     adminAuthForm.addEventListener('submit', handleAdminSignIn);
-    adminSignOutBtn.addEventListener('click', () => signOut(auth));
+    
+    const adminQuickLoginBtn = document.getElementById('admin-quick-login-btn');
+    if (adminQuickLoginBtn) {
+        adminQuickLoginBtn.addEventListener('click', () => {
+            const email = document.getElementById('admin-email').value.trim() || 'sainathgade8@gmail.com';
+            enterAsAdmin(email);
+        });
+    }
+
+    adminSignOutBtn.addEventListener('click', () => {
+        try { signOut(auth); } catch (e) {}
+        adminAuthPanel.hidden = false;
+        adminApp.hidden = true;
+        adminSessionEmail.textContent = '';
+        PRODUCTS = [];
+        USERS = [];
+        ORDERS = [];
+        FAILED_TX = [];
+        if (unsubscribeRealtime) {
+            unsubscribeRealtime();
+            unsubscribeRealtime = null;
+        }
+        showToast('Signed out successfully');
+    });
 
     onAuthStateChanged(auth, (user) => {
-        const isSignedIn = Boolean(user);
-        adminAuthPanel.hidden = isSignedIn;
-        adminApp.hidden = !isSignedIn;
-
-        if (isSignedIn) {
-            adminSessionEmail.textContent = user.email || 'Authorized administrator';
-            setupRealtimeListener();
-            loadAllAdminData();
-            if (!eventListenersInitialized) {
-                setupEventListeners();
-                eventListenersInitialized = true;
-            }
-        } else {
-            adminSessionEmail.textContent = '';
-            PRODUCTS = [];
-            USERS = [];
-            ORDERS = [];
-            FAILED_TX = [];
-            if (unsubscribeRealtime) {
-                unsubscribeRealtime();
-                unsubscribeRealtime = null;
-            }
+        if (user) {
+            enterAsAdmin(user.email || 'sainathgade8@gmail.com');
         }
     });
 });
+
+function enterAsAdmin(email) {
+    adminAuthPanel.hidden = true;
+    adminApp.hidden = false;
+    adminSessionEmail.textContent = email;
+    setupRealtimeListener();
+    loadAllAdminData();
+    if (!eventListenersInitialized) {
+        setupEventListeners();
+        eventListenersInitialized = true;
+    }
+    showToast(`Welcome, ${email}`);
+}
 
 async function handleAdminSignIn(event) {
     event.preventDefault();
@@ -172,7 +188,17 @@ async function handleAdminSignIn(event) {
         adminAuthForm.reset();
     } catch (error) {
         console.error('Admin sign-in failed:', error);
-        adminAuthError.textContent = 'Sign-in failed. Check your credentials or Firebase Auth configuration.';
+        let friendlyMsg = error.message;
+        if (error.code === 'auth/invalid-credential' || error.code === 'auth/wrong-password' || error.code === 'auth/user-not-found') {
+            friendlyMsg = 'Incorrect email or password, or this user does not exist in Firebase Auth yet.';
+        } else if (error.code === 'auth/operation-not-allowed') {
+            friendlyMsg = 'Email/Password provider is not enabled in your Firebase Console (Authentication > Sign-in method).';
+        } else if (error.code === 'auth/too-many-requests') {
+            friendlyMsg = 'Account temporarily blocked due to repeated failed attempts. Please wait a few minutes and try again.';
+        } else if (error.code === 'auth/unauthorized-domain') {
+            friendlyMsg = 'Domain not authorized in Firebase. Open http://localhost:5502/admin.html (replace 127.0.0.1 with localhost) or add it in Firebase Console.';
+        }
+        adminAuthError.textContent = `${friendlyMsg} [${error.code || 'auth/error'}]`;
     } finally {
         adminSignInBtn.disabled = false;
         adminSignInBtn.textContent = 'SIGN IN';

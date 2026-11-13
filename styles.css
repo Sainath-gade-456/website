@@ -2119,3 +2119,112 @@ ul {
         transform: translateX(50%) translateY(0);
     }
 }
+
+/* ==========================================================================
+   Prominent Header & Hero Search Bar Styling
+   ========================================================================== */
+.nav-search-bar {
+    display: flex;
+    align-items: center;
+    position: relative;
+    max-width: 280px;
+    width: 100%;
+    margin: 0 1rem;
+}
+
+.nav-search-bar .nav-search-icon {
+    position: absolute;
+    left: 0.9rem;
+    color: #888888;
+    font-size: 0.85rem;
+    pointer-events: none;
+}
+
+.nav-search-input {
+    width: 100%;
+    padding: 0.5rem 2rem 0.5rem 2.2rem;
+    background: #ffffff;
+    border: 1px solid #d4d4d4;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    color: #111111;
+    outline: none;
+    transition: all 0.25s ease;
+}
+
+.nav-search-input:focus {
+    border-color: #111111;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.nav-search-clear {
+    position: absolute;
+    right: 0.8rem;
+    background: none;
+    border: none;
+    color: #888888;
+    font-size: 0.75rem;
+    cursor: pointer;
+    padding: 0.2rem;
+}
+
+.hero-search-container {
+    margin-top: 1.8rem;
+    margin-bottom: 2rem;
+    max-width: 580px;
+    width: 100%;
+}
+
+.hero-search-box {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
+    padding: 0.3rem 0.35rem 0.3rem 1.1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.hero-search-box i {
+    color: #666666;
+    font-size: 1rem;
+    margin-right: 0.8rem;
+}
+
+.hero-search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 0.92rem;
+    color: #111111;
+}
+
+.hero-search-input::placeholder {
+    color: #888888;
+}
+
+.hero-search-submit {
+    background: #111111;
+    color: #ffffff;
+    border: none;
+    padding: 0.75rem 1.4rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.hero-search-submit:hover {
+    background: #2a2a2a;
+}
+
+@media (max-width: 900px) {
+    .nav-search-bar {
+        display: none; /* Hide header input on small screens, keep hero & collection search */
+    }
+}

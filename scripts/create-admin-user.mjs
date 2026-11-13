@@ -2,7 +2,9 @@
 // Creates the admin user in Firebase Auth (Email/Password) and sets the admin custom claim.
 // Usage: node scripts/create-admin-user.mjs <email> <password>
 
-import { initializeApp, cert, getApps } from 'firebase-admin/app';
+import 'dotenv/config';
+import fs from 'fs';
+import { initializeApp, cert, applicationDefault, getApps } from 'firebase-admin/app';
 import { getAuth } from 'firebase-admin/auth';
 
 const email    = process.argv[2]?.trim();
@@ -18,9 +20,17 @@ if (password.length < 6) {
   process.exit(1);
 }
 
-// Initialise with Application Default Credentials (uses gcloud / firebase login)
+// Initialise Firebase Admin
 if (!getApps().length) {
-  initializeApp({ projectId: 'landing-page-ba0a8' });
+  const serviceAccountJson = process.env.FIREBASE_SERVICE_ACCOUNT_JSON;
+  const credPath = process.env.GOOGLE_APPLICATION_CREDENTIALS;
+  if (serviceAccountJson) {
+    initializeApp({ credential: cert(JSON.parse(serviceAccountJson)) });
+  } else if (credPath && fs.existsSync(credPath)) {
+    initializeApp({ credential: cert(credPath) });
+  } else {
+    initializeApp({ credential: applicationDefault(), projectId: 'landing-page-ba0a8' });
+  }
 }
 
 const auth = getAuth();

@@ -284,18 +284,69 @@ function setupEventListeners() {
     }
 
     // Collection Search & Filter Triggers
+    const navSearchInput = document.getElementById('nav-search-input');
+    const navSearchClear = document.getElementById('nav-search-clear');
+    const heroSearchInput = document.getElementById('hero-search-input');
+    const heroSearchSubmit = document.getElementById('hero-search-submit');
+
+    function syncSearchInputs(value, triggerScroll = false) {
+        searchQuery = value;
+        if (collectionSearchInput && collectionSearchInput.value !== value) collectionSearchInput.value = value;
+        if (navSearchInput && navSearchInput.value !== value) navSearchInput.value = value;
+        if (heroSearchInput && heroSearchInput.value !== value) heroSearchInput.value = value;
+        if (navSearchClear) navSearchClear.style.display = value ? 'block' : 'none';
+        if (clearSearchBtn) clearSearchBtn.style.display = value ? 'block' : 'none';
+
+        filterProducts();
+
+        if (triggerScroll && value.trim().length > 0) {
+            const shopSection = document.getElementById('shop');
+            if (shopSection) {
+                shopSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    }
+
     if (collectionSearchInput) {
         collectionSearchInput.addEventListener('input', (e) => {
-            searchQuery = e.target.value;
-            filterProducts();
+            syncSearchInputs(e.target.value);
+        });
+    }
+
+    if (navSearchInput) {
+        navSearchInput.addEventListener('input', (e) => {
+            syncSearchInputs(e.target.value, true);
+        });
+    }
+
+    if (navSearchClear) {
+        navSearchClear.addEventListener('click', () => {
+            syncSearchInputs('');
+            if (navSearchInput) navSearchInput.focus();
+        });
+    }
+
+    if (heroSearchInput) {
+        heroSearchInput.addEventListener('input', (e) => {
+            syncSearchInputs(e.target.value);
+        });
+        heroSearchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                syncSearchInputs(heroSearchInput.value, true);
+            }
+        });
+    }
+
+    if (heroSearchSubmit) {
+        heroSearchSubmit.addEventListener('click', () => {
+            syncSearchInputs(heroSearchInput?.value || '', true);
         });
     }
 
     if (clearSearchBtn) {
         clearSearchBtn.addEventListener('click', () => {
-            searchQuery = "";
-            if (collectionSearchInput) collectionSearchInput.value = "";
-            filterProducts();
+            syncSearchInputs('');
             if (collectionSearchInput) collectionSearchInput.focus();
         });
     }
